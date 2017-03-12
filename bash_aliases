@@ -5,3 +5,6 @@ alias cleanup='echo "Cleaning Up" && sudo apt -f install && sudo apt -y autoremo
 #Virtual Box helpers
 alias mediavm='VBoxManage startvm "xubuntu-media-test" --type headless'
 alias dockervm='VBoxManage startvm "xubuntu-docker-test" --type headless'
+
+#VNC helpers
+alias vncchromebook='vncserver :1 -geometry 1366x768 -depth 24'
