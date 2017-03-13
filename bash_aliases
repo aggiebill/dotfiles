@@ -1,3 +1,5 @@
+export TERM=xterm-256color
+
 #To get GPG signing working with git
 export GPG_TTY=$(tty)
 
