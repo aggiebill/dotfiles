@@ -16,3 +16,8 @@ set shiftwidth=4
 filetype indent on
 
 let python_highlight_all = 1
+
+"For Raspbian
+if has("syntax")
+      syntax on
+endif
