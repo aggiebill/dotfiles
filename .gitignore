@@ -1,0 +1,6 @@
+#Ignore any private files
+bash_aliases_private
+*_private
+
+#vim
+*.swp
