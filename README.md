@@ -17,4 +17,6 @@ sudo apt install byobu vim build-essentials
 * @chriskempson for [base16-vim](https://github.com/chriskempson/base16-vim)
 * @altercation for [vim-colors-solarized](https://github.com/altercation/vim-colors-solarized)
 * For the number of other GitHub dotfile repos I borrowed from:
-  * @tpope
+  * @tpope for numerous useful repos
+  * @webpro for [awesome-dotfiles](https://github.com/webpro/awesome-dotfiles)
+  * @kdeldycke for [dotfiles](https://github.com/kdeldycke/dotfiles)
