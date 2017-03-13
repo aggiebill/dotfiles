@@ -11,3 +11,16 @@ alias dockervm='VBoxManage startvm "xubuntu-docker-test" --type headless'
 
 #VNC helpers
 alias vncchromebook='vncserver :1 -geometry 1366x768 -depth 24'
+
+#Exports for python virtualenvs
+#http://docs.python-guide.org/en/latest/dev/virtualenvs/
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+source /usr/local/bin/virtualenvwrapper.sh
+
+#For aliases we don't want to check into git
+#Things like path names and internal network information
+if [ -f ~/.bash_aliases_private ]; then
+    . ~/.bash_aliases_private
+fi
