@@ -1,4 +1,13 @@
+#byobu configurations
 export TERM=xterm-256color
+if [ -z "$_motd_listed" ]; then
+    case "$TMUX_PANE" in
+        %1) cat /run/motd.dynamic
+            export _motd_listed=yes
+            ;;
+        *)  ;;
+    esac
+fi
 
 #To get GPG signing working with git
 export GPG_TTY=$(tty)
