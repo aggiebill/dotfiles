@@ -10,7 +10,7 @@ ln -s ~/Documents/src/<file> ~/.<file>
 ## Required Packages
 These are my typical apt packages to get up and running:
 ```bash
-sudo apt install byobu vim build-essentials htop python3-pip
+sudo apt install byobu vim build-essential htop python3-pip
 ```
 
 # Thanks to:
