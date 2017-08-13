@@ -13,6 +13,14 @@ These are my typical apt packages to get up and running:
 sudo apt install byobu vim build-essential htop python3-pip
 ```
 
+## Cleanup
+Since I like to use Python 3, I need to separate pip3 and pip2.  
+```bash
+python3 -m pip install -U --force-reinstall pip
+python -m pip install -U --force-reinstall pip
+```
+After this, ```pip == pip2```.
+
 # Thanks to:
 * @chriskempson for [base16-vim](https://github.com/chriskempson/base16-vim)
 * @altercation for [vim-colors-solarized](https://github.com/altercation/vim-colors-solarized)
