@@ -21,6 +21,12 @@ python -m pip install -U --force-reinstall pip
 ```
 After this, ```pip == pip2```.
 
+### VirtualEnvWrapper
+
+```bash
+sudo -H pip3 install virtualenvwrapper
+```
+
 # Thanks to:
 * @chriskempson for [base16-vim](https://github.com/chriskempson/base16-vim)
 * @altercation for [vim-colors-solarized](https://github.com/altercation/vim-colors-solarized)
