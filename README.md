@@ -27,6 +27,12 @@ After this, ```pip == pip2```.
 sudo -H pip3 install virtualenvwrapper
 ```
 
+### Fix Citrix Receiver
+
+```bash
+sudo ln -s /usr/share/ca-certificates/mozilla/* /opt/Citrix/ICAClient/keystore/cacerts
+```
+
 # Thanks to:
 * @chriskempson for [base16-vim](https://github.com/chriskempson/base16-vim)
 * @altercation for [vim-colors-solarized](https://github.com/altercation/vim-colors-solarized)
