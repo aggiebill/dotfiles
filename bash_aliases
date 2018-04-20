@@ -1,16 +1,18 @@
 #byobu configurations
 export TERM=xterm-256color
-if [ -z "$_motd_listed" ]; then
-    case "$TMUX_PANE" in
-        %1) cat /run/motd.dynamic
-            export _motd_listed=yes
-            ;;
-        *)  ;;
-    esac
-fi
+#if [ -z "$_motd_listed" ]; then
+#    case "$TMUX_PANE" in
+#        %1) cat /run/motd.dynamic
+#            export _motd_listed=yes
+#            ;;
+#        *)  ;;
+#    esac
+#fi
 
 #To get GPG signing working with git
 export GPG_TTY=$(tty)
+
+#export grepip="grep -oE '\b((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b'
 
 #apt helpers
 alias update="sudo apt update && sudo apt -y upgrade && sudo apt -y dist-upgrade"
