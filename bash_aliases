@@ -14,6 +14,12 @@ export GPG_TTY=$(tty)
 
 #export grepip="grep -oE '\b((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b'
 
+# some more ls aliases
+alias ll='ls -alF'
+alias lh='ls -alFh'
+alias la='ls -A'
+alias l='ls -CF'
+
 #apt helpers
 alias update="sudo apt update && sudo apt -y upgrade && sudo apt -y dist-upgrade"
 alias cleanup='echo "Cleaning Up" && sudo apt -f install && sudo apt -y autoremove && sudo apt -y autoclean && sudo apt -y clean'
