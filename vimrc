@@ -6,9 +6,9 @@ endif
 "Light background for gvim
 "Dark background for terminal vim
 if has('gui_running')
-        set background=light
-    else
         set background=dark
+    else
+        set background=light
 endif
 
 let g:solarized_termcolors=256
