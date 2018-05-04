@@ -8,7 +8,7 @@ endif
 if has('gui_running')
         set background=dark
     else
-        set background=light
+        set background=dark
 endif
 
 let g:solarized_termcolors=256
