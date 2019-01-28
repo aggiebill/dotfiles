@@ -1,0 +1,7 @@
+[user]
+	name = 
+	email = 
+# End with an ! to force a specific subkey
+	signingkey = 
+[commit]
+	gpgsign = true
