@@ -42,6 +42,10 @@ export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Devel
 source /usr/local/bin/virtualenvwrapper.sh
 
+if [ -d ~/.local/bin ]; then
+    export PATH=$PATH:~/.local/bin
+fi
+
 #For aliases we don't want to check into git
 #Things like path names and internal network information
 if [ -f ~/.bash_aliases_private ]; then
