@@ -5,3 +5,6 @@
 	signingkey = 
 [commit]
 	gpgsign = true
+[core]
+        autocrlf = input
+        editor = vim
