@@ -12,7 +12,7 @@ export TERM=xterm-256color
 # To get GPG signing working with git
 export GPG_TTY=$(tty)
 
-export grepip="grep -oE '\b((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b'
+export grepip="grep -oE '\b((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b'"
 
 # Make vim default editor
 export VISUAL="vim"
