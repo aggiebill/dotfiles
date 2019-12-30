@@ -4,6 +4,7 @@ bash_aliases_private
 
 #vim
 *.swp
+.netrwhist
 
 # Compiled source #
 ###################
