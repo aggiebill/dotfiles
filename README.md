@@ -10,7 +10,7 @@ ln -s ~/Documents/src/<file> ~/.<file>
 ## Required Packages
 These are my typical apt packages to get up and running:
 ```bash
-sudo apt install byobu vim build-essential htop python3-pip python-dev python-pip ubuntu-restricted-addons ubuntu-restricted-extras git dnsutils software-properties-common
+sudo apt install apt-transport-https byobu vim build-essential htop python3-pip python-dev python-pip ubuntu-restricted-addons ubuntu-restricted-extras git dnsutils software-properties-common
 sudo apt install vim-gnome
 ```
 
@@ -29,6 +29,8 @@ sudo -H pip3 install virtualenvwrapper
 ```
 
 ### Fix Citrix Receiver
+
+[Citrix HDX](https://www.citrix.com/downloads/citrix-receiver/additional-client-software/hdx-realtime-media-engine.html)
 
 ```bash
 sudo ln -s /usr/share/ca-certificates/mozilla/* /opt/Citrix/ICAClient/keystore/cacerts
