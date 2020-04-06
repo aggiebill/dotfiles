@@ -10,8 +10,11 @@ ln -s ~/Documents/src/<file> ~/.<file>
 ## Required Packages
 These are my typical apt packages to get up and running:
 ```bash
-sudo apt install apt-transport-https byobu vim build-essential htop python3-pip python-dev python-pip ubuntu-restricted-addons ubuntu-restricted-extras git dnsutils software-properties-common
+sudo apt install apt-transport-https byobu vim build-essential htop python3-pip python-dev python-pip git dnsutils software-properties-common
+# For Desktop Systems
 sudo apt install vim-gnome
+# For Ubuntu Systems
+sudo apt install ubuntu-restricted-addons ubuntu-restricted-extras
 ```
 
 ## Cleanup
