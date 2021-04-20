@@ -10,7 +10,7 @@ ln -s ~/Documents/src/<file> ~/.<file>
 ## Required Packages
 These are my typical apt packages to get up and running:
 ```bash
-sudo apt install apt-transport-https byobu vim build-essential htop python3-pip python-dev python-pip git dnsutils software-properties-common
+sudo apt install apt-transport-https byobu vim build-essential htop python3-pip python-dev python-pip git dnsutils software-properties-common neofetch
 # For Desktop Systems
 sudo apt install vim-gnome
 # For Ubuntu Systems
@@ -37,6 +37,11 @@ sudo -H pip3 install virtualenvwrapper
 
 ```bash
 sudo ln -s /usr/share/ca-certificates/mozilla/* /opt/Citrix/ICAClient/keystore/cacerts
+```
+### MOTD
+
+```bash
+sudo bash -c $'echo "neofetch" >> /etc/profile.d/mymotd.sh && chmod +x /etc/profile.d/mymotd.sh'
 ```
 
 # Thanks to:
