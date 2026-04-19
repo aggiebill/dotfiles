@@ -46,6 +46,23 @@ gpg --edit-key <key-id>
 ```
 Ensure your GPG configs are symlinked via the install script for modern compatibility.
 
+## GPG Environment-Specific Setup
+This repo defaults to desktop use, so the packaged GPG settings are aimed at a GUI-capable machine.
+
+### Desktop (default)
+- Use the repo as-is; the current `gnupg/` config is intended for desktop GPG usage.
+- GUI pinentry is expected, and the default pinentry program works with your desktop environment.
+- If you sign Git commits, make sure your signing key is configured in Git.
+
+### Headless server
+- Install `pinentry-curses` for terminal-based passphrase entry.
+- Set `GPG_TTY=$(tty)` in your shell environment before using GPG.
+- Override `pinentry-program` if needed, for example:
+  ```bash
+  echo 'pinentry-program /usr/bin/pinentry-curses' >> ~/.gnupg/gpg-agent.conf
+  ```
+- The repo already uses `no-honor-keyserver-url` in `gnupg/dirmngr.conf`, which is safer for server environments.
+
 ## Cleanup
 No longer needed with modern tools.
 
