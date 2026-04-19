@@ -55,7 +55,7 @@ done
 # Install system packages
 echo -e "${GREEN}Installing system packages...${NC}"
 sudo apt update
-sudo apt install -y apt-transport-https vim build-essential htop git dnsutils software-properties-common neofetch curl
+sudo apt install -y apt-transport-https vim build-essential htop git dnsutils software-properties-common fastfetch curl
 
 # Install uv (modern Python package manager)
 echo -e "${GREEN}Installing uv...${NC}"

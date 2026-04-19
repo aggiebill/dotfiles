@@ -21,7 +21,7 @@ ln -s <dotfiles_dir>/gnupg/* ~/.gnupg/
 ## Required Packages
 The install script installs these packages automatically:
 ```bash
-sudo apt install apt-transport-https vim build-essential htop git dnsutils software-properties-common neofetch curl
+sudo apt install apt-transport-https neovim build-essential htop git dnsutils software-properties-common fastfetch curl
 ```
 Additionally, it installs:
 - uv: Modern Python package manager
@@ -30,11 +30,27 @@ Additionally, it installs:
 ## Python Setup
 Using uv for Python package management and ruff for linting/formatting.
 
+## GPG Setup
+To import a GPG key from a file (e.g., a public key or private key export):
+```bash
+gpg --import /path/to/your/key.asc
+```
+After importing, verify the key:
+```bash
+gpg --list-keys
+```
+If importing a private key, you may need to trust it:
+```bash
+gpg --edit-key <key-id>
+# Then type 'trust' and select the trust level.
+```
+Ensure your GPG configs are symlinked via the install script for modern compatibility.
+
 ## Cleanup
 No longer needed with modern tools.
 
 ### MOTD
-The install script sets up neofetch in /etc/profile.d/mymotd.sh
+The install script sets up fastfetch in /etc/profile.d/mymotd.sh
 
 # Thanks to:
 * @chriskempson for [base16-vim](https://github.com/chriskempson/base16-vim)
