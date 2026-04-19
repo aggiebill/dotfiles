@@ -40,13 +40,7 @@ alias dockervm='VBoxManage startvm "xubuntu-docker-test" --type headless'
 alias vncchromebook='vncserver :1 -geometry 1366x768 -depth 24'
 
 # Exports for python virtualenvs
-# http://docs.python-guide.org/en/latest/dev/virtualenvs/
-# Jumping on the pipenv bandwagon!
-#export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-#export WORKON_HOME=$HOME/.virtualenvs
-#export PROJECT_HOME=$HOME/Devel
-#source /usr/local/bin/virtualenvwrapper.sh
-
+# Using uv for modern Python management
 if [ -d ~/.local/bin ]; then
     export PATH=$PATH:~/.local/bin
 fi

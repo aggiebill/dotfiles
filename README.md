@@ -2,47 +2,39 @@
 These are my personal dotfiles and my attempt at getting more organized.
 
 # Installation
-## Manual Installation
-Until I get a better method for installing these files, it will largely be:
+Download the repo as a zip, extract, and run the install script:
 ```bash
-ln -s ~/Documents/src/<file> ~/.<file>
+chmod +x install.sh
+./install.sh
 ```
+This will create symlinks for the dotfiles and install necessary packages.
+
+## Manual Installation (fallback)
+```bash
+ln -s <dotfiles_dir>/bash_aliases ~/.bash_aliases
+ln -s <dotfiles_dir>/vimrc ~/.vimrc
+ln -s <dotfiles_dir>/gitconfig ~/.gitconfig
+ln -s <dotfiles_dir>/vim ~/.vim
+ln -s <dotfiles_dir>/gnupg/* ~/.gnupg/
+```
+
 ## Required Packages
-These are my typical apt packages to get up and running:
+The install script installs these packages automatically:
 ```bash
-sudo apt install apt-transport-https byobu vim build-essential htop python3-pip python-dev python-pip git dnsutils software-properties-common neofetch
-# For Desktop Systems
-sudo apt install vim-gnome
-# For Ubuntu Systems
-sudo apt install ubuntu-restricted-addons ubuntu-restricted-extras
+sudo apt install apt-transport-https vim build-essential htop git dnsutils software-properties-common neofetch curl
 ```
+Additionally, it installs:
+- uv: Modern Python package manager
+- ruff: Python linter and formatter
+
+## Python Setup
+Using uv for Python package management and ruff for linting/formatting.
 
 ## Cleanup
-Since I like to use Python 3, I need to separate pip3 and pip2.  
-```bash
-python3 -m pip install -U --force-reinstall pip
-python -m pip install -U --force-reinstall pip
-```
-After this, ```pip == pip2```.
+No longer needed with modern tools.
 
-### VirtualEnvWrapper
-
-```bash
-sudo -H pip3 install virtualenvwrapper
-```
-
-### Fix Citrix Receiver
-
-[Citrix HDX](https://www.citrix.com/downloads/citrix-receiver/additional-client-software/hdx-realtime-media-engine.html)
-
-```bash
-sudo ln -s /usr/share/ca-certificates/mozilla/* /opt/Citrix/ICAClient/keystore/cacerts
-```
 ### MOTD
-
-```bash
-sudo bash -c $'echo "neofetch" >> /etc/profile.d/mymotd.sh && chmod +x /etc/profile.d/mymotd.sh'
-```
+The install script sets up neofetch in /etc/profile.d/mymotd.sh
 
 # Thanks to:
 * @chriskempson for [base16-vim](https://github.com/chriskempson/base16-vim)

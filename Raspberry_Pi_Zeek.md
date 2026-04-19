@@ -28,7 +28,7 @@ alias update="sudo apt update && sudo apt -y upgrade && sudo apt -y dist-upgrade
 alias cleanup='echo "Cleaning Up" && sudo apt -f install && sudo apt -y autoremove && sudo apt -y autoclean && sudo apt -y clean'
 update
 cleanup
-sudo apt install byobu vim build-essential htop git dnsutils software-properties-common python3 python3-pip python-dev cmake make gcc g++ flex bison libpcap-dev libssl-dev swig zlib1g-dev libmaxminddb-dev postfix curl
+sudo apt install byobu vim build-essential htop git dnsutils software-properties-common python3 cmake make gcc g++ flex bison libpcap-dev libssl-dev swig zlib1g-dev libmaxminddb-dev postfix curl
 
 apt-get install cmake make gcc g++ flex bison libpcap-dev libssl-dev python-dev swig zlib1g-dev libgeoip-dev build-essential libelf-dev raspberrypi-kernel-headers
 update
