@@ -1,0 +1,72 @@
+# Personal / machine-specific bash aliases and environment
+# DO NOT COMMIT THIS FILE (it is in .gitignore or kept out of the repo intentionally).
+#
+# Usage:
+#   cp bash_aliases_private.example ~/.bash_aliases_private
+#   chmod 600 ~/.bash_aliases_private
+#   # Then edit for your machine.
+#
+# This file is automatically sourced at the end of ~/.bash_aliases (if present).
+# Perfect place for secrets, work VPN paths, WSL-only tweaks, etc.
+
+# ============================================================
+# WSL-SPECIFIC SECTION
+# ============================================================
+# This block only activates when running under WSL (Microsoft kernel).
+if grep -qi microsoft /proc/version 2>/dev/null; then
+    export WSL=1
+    export WSL_DISTRO_NAME="${WSL_DISTRO_NAME:-Ubuntu-26.04}"
+
+    # --- Quick directory jumps (very handy in WSL) ---
+    alias cdc='cd /mnt/c'
+    alias cdu='cd /mnt/c/Users'
+    # Jump to your Windows user profile (handles spaces reasonably)
+    alias cdw='cd "/mnt/c/Users/$(cmd.exe /c "echo %USERNAME% 2>nul" | tr -d "\r")"'
+
+    # --- Windows interop / launchers ---
+    alias clip='clip.exe'                    # echo "text" | clip     → copies to Windows clipboard
+    alias explorer='explorer.exe .'          # open current dir in Windows Explorer
+    alias open='wslview 2>/dev/null || explorer.exe'
+    alias start='cmd.exe /c start ""'        # start notepad.exe etc.
+    alias pwsh='pwsh.exe'                    # launch PowerShell (if installed)
+    alias cmd='cmd.exe'
+
+    # --- WSL maintenance (requires wsl.exe in PATH) ---
+    alias wsl-update='wsl.exe --update'
+    alias wsl-shutdown='wsl.exe --shutdown'
+    alias wsl-list='wsl.exe --list --verbose'
+
+    # Windows host IP (useful with mirrored networking mode)
+    alias ipwin='ip route show default | awk "{print \$3}"'
+
+    # --- Quality of life in WSL terminals ---
+    alias cls='clear'                        # muscle memory from cmd.exe
+    # alias ls='ls --color=auto'             # already provided by system .bashrc + our bash_aliases
+
+    # --- Prevent accidental Windows binary shadowing (example) ---
+    # If you want Linux python3 to always win over python.exe from Windows:
+    # alias python='python3'
+    # alias pip='python3 -m pip'
+
+    # --- Example: Windows credential helper for Git (if you prefer it) ---
+    # git config --global credential.helper "/mnt/c/Program Files/Git/mingw64/bin/git-credential-manager.exe"
+
+    # Add your own WSL-only functions/exports below...
+    # export MY_WORK_PROJECT="/home/bill/projects/whatever"
+fi
+
+# ============================================================
+# GENERAL PERSONAL ALIASES (work on any machine)
+# ============================================================
+
+# Example private alias you don't want in the public repo
+# alias myvpn='sudo openvpn /etc/openvpn/mywork.ovpn'
+
+# Private environment variables, API tokens, etc.
+# export GITHUB_TOKEN="ghp_xxxxxxxxxxxxxxxxxxxx"
+# export WORK_EMAIL="bill@company.com"
+
+# Source even more private stuff if you split it further
+# if [ -f ~/.bash_aliases_supersecret ]; then
+#     . ~/.bash_aliases_supersecret
+# fi

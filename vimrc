@@ -1,10 +1,19 @@
-"For Raspbian
+" Shared configuration for both Vim and Neovim (aggiebill/dotfiles)
+" Neovim is the primary editor. This file + the ~/.vim/ directory (colors,
+" syntax, etc.) provide the common backend that both editors use.
+" See nvim/init.vim for the Neovim bootstrap + modern/WSL additions.
+
+" Include color scheme submodules. These replace the old vendored copies
+" of base16-vim and vim-colors-solarized so we get updates automatically.
+set runtimepath^=~/.vim/bundle/base16-vim
+set runtimepath^=~/.vim/bundle/vim-colors-solarized
+
 if has("syntax")
     syntax on
 endif
 
 "Light background for gvim
-"Dark background for terminal vim
+"Dark background for terminal vim/neovim
 if has('gui_running')
     set background=dark
 else

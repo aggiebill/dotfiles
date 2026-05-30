@@ -43,3 +43,6 @@ bash_aliases_private
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Locally installed plugins (use the pack/ method documented in README)
+vim/pack/

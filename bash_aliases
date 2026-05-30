@@ -14,9 +14,15 @@ export GPG_TTY=$(tty)
 
 export grepip="grep -oE '\b((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b'"
 
-# Make vim default editor
-export VISUAL="vim"
+# Neovim is the primary editor (replaces vim for daily use).
+# The vim/ directory + vimrc provide the shared configuration (colors, autocmds,
+# indentation rules, etc.) that both editors use for compatibility.
+export VISUAL="nvim"
 export EDITOR="$VISUAL"
+
+# Convenience: typing 'vim' launches nvim. Real vim binary is still available
+# at /usr/bin/vim (or command vim) if you ever need the classic behavior.
+alias vim='nvim'
 
 # some more ls aliases
 alias ll='ls -alF'
