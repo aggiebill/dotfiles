@@ -100,7 +100,7 @@ endif
 "   :TSInstall python lua vim bash
 "
 if has('nvim-0.9')
-  lua << EOF
+lua << EOF
     local ok, configs = pcall(require, 'nvim-treesitter.configs')
     if ok then
       configs.setup {
@@ -140,5 +140,5 @@ if has('nvim-0.9')
       vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
       vim.opt.foldenable = false   -- start with folds open
     end
-  EOF
+EOF
 endif
