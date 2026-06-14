@@ -8,7 +8,14 @@ local ok, configs = pcall(require, 'nvim-treesitter.configs')
 if ok then
   configs.setup {
     -- Parsers to install automatically on first use (or run :TSInstall manually)
-    ensure_installed = { "python", "lua", "vim", "vimdoc", "bash", "markdown" },
+    -- Focused on excellent Python + shell (bash/sh) experience, plus common supporting languages.
+    ensure_installed = {
+      "python", "bash",
+      -- Supporting for a polished dev experience
+      "lua", "vim", "vimdoc", "markdown",
+      "json", "yaml", "toml",
+      "dockerfile", "make", "regex", "comment",
+    },
 
     -- Use Tree-sitter for highlighting (far better than legacy syntax/)
     highlight = {
