@@ -115,4 +115,9 @@ if [ -d .git ]; then
 fi
 
 echo -e "${GREEN}Installation complete! Please restart your shell or run 'source ~/.bashrc' to apply changes.${NC}"
-echo -e "${YELLOW}Remember to edit ~/.gitconfig with your name, email, and GPG key.${NC}"
+
+# Only remind if the gitconfig template still has blank/placeholder user info.
+# (Many people keep personalized values in their local copy of this repo.)
+if ! grep -qE '^[[:space:]]*name[[:space:]]*=[[:space:]]*[^[:space:]]' "$DOTFILES_DIR/gitconfig" 2>/dev/null; then
+    echo -e "${YELLOW}Remember to edit $DOTFILES_DIR/gitconfig (symlinked to ~/.gitconfig) with your name, email, and GPG/SSH signing key.${NC}"
+fi
