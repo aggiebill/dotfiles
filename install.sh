@@ -62,6 +62,13 @@ mkdir -p ~/.config/nvim
 backup_file ~/.config/nvim/init.vim
 ln -sf "$DOTFILES_DIR/nvim/init.vim" ~/.config/nvim/init.vim
 
+# Symlink Neovim Lua modules (e.g. treesitter.lua).
+# This lets us use real .lua files + `lua require('treesitter')` from init.vim
+# instead of inline heredocs with EOF markers.
+if [ -d "$DOTFILES_DIR/nvim/lua" ]; then
+    ln -sfn "$DOTFILES_DIR/nvim/lua" ~/.config/nvim/lua
+fi
+
 # Symlink fastfetch config (WSL-optimized, compact, good for MOTD)
 mkdir -p ~/.config/fastfetch
 backup_file ~/.config/fastfetch/config.jsonc
