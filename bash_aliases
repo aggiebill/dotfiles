@@ -48,7 +48,7 @@ alias vncchromebook='vncserver :1 -geometry 1366x768 -depth 24'
 # Exports for python virtualenvs
 # Using uv for modern Python management
 if [ -d ~/.local/bin ]; then
-    export PATH=$PATH:~/.local/bin
+    export PATH=~/.local/bin:$PATH
 fi
 
 #For aliases we don't want to check into git

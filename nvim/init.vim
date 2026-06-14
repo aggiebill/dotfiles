@@ -96,49 +96,33 @@ endif
 "   git clone https://github.com/nvim-treesitter/nvim-treesitter \
 "       ~/.vim/pack/plugins/start/nvim-treesitter
 "
-" Then run inside Neovim:
-"   :TSInstall python lua vim bash
+"   # Pin to a version compatible with Neovim 0.11 (the main branch now
+"   # requires 0.12+ and will fail the health check).
+"   cd ~/.vim/pack/plugins/start/nvim-treesitter
+"   git checkout v0.9.3
 "
+"   # Also install the tree-sitter CLI (needed for some operations):
+"   mkdir -p ~/.local/bin
+"   curl -fsSL https://github.com/tree-sitter/tree-sitter/releases/latest/download/tree-sitter-linux-x64.gz \
+"     | gunzip > ~/.local/bin/tree-sitter
+"   chmod +x ~/.local/bin/tree-sitter
+"
+" Then (after restarting your shell so ~/.local/bin is in $PATH) run inside Neovim:
+"   :TSInstall python bash
+"
+" IMPORTANT: In the current version of nvim-treesitter, bare `:TSInstall`
+" gives "E471: Argument required". You must pass the language name(s).
+" Use <Tab> after `:TSInstall ` for completion of available parsers.
+"
+" The Lua configuration in nvim/lua/treesitter.lua will also automatically
+" trigger installation of the key parsers (python, bash + supporting)
+" the first time you start Neovim (via ensure_installed). It enables
+" treesitter highlighting, indent, and incremental selection (gnn/grn etc.)
+" for those filetypes.
+"
+" The Lua configuration lives in nvim/lua/treesitter.lua (no heredoc/EOF
+" needed in init.vim). It is loaded only if the plugin is present.
 if has('nvim-0.9')
-  lua << EOF
-    local ok, configs = pcall(require, 'nvim-treesitter.configs')
-    if ok then
-      configs.setup {
-        -- Parsers to install automatically on first use (or run :TSInstall manually)
-        ensure_installed = { "python", "lua", "vim", "vimdoc", "bash", "markdown" },
-
-        -- Use Tree-sitter for highlighting (far better than legacy syntax/)
-        highlight = {
-          enable = true,
-          -- Disable for very large files if needed
-          disable = function(lang, buf)
-            local max_filesize = 100 * 1024 -- 100 KB
-            local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-            if ok and stats and stats.size > max_filesize then
-              return true
-            end
-          end,
-        },
-
-        -- Better indentation than the old indentexpr in many cases
-        indent = { enable = true },
-
-        -- Incremental selection (very useful)
-        incremental_selection = {
-          enable = true,
-          keymaps = {
-            init_selection = "gnn",
-            node_incremental = "grn",
-            scope_incremental = "grc",
-            node_decremental = "grm",
-          },
-        },
-      }
-
-      -- Optional: enable folding based on Tree-sitter
-      vim.opt.foldmethod = "expr"
-      vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-      vim.opt.foldenable = false   -- start with folds open
-    end
-  EOF
+  " Safe require: the treesitter plugin itself is optional.
+  lua pcall(require, 'treesitter')
 endif

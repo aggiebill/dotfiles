@@ -21,7 +21,9 @@ Download the repo as a zip, extract, and run the install script (submodules will
 chmod +x install.sh
 ./install.sh
 ```
-This will create symlinks for the dotfiles and install necessary packages.
+This will create symlinks for the dotfiles, install latest Neovim (tarball), pinned nvim-treesitter, tree-sitter CLI, uv/ruff, and set up MOTD + submodules.
+
+After `./install.sh`, open Neovim once to let treesitter auto-install the parsers listed in `nvim/lua/treesitter.lua` (python, bash, etc.), or run `:TSInstall python bash` inside Neovim.
 
 ## Manual Installation (fallback)
 ```bash
@@ -29,10 +31,21 @@ ln -s <dotfiles_dir>/bash_aliases ~/.bash_aliases
 ln -s <dotfiles_dir>/vimrc ~/.vimrc
 ln -s <dotfiles_dir>/gitconfig ~/.gitconfig
 ln -s <dotfiles_dir>/vim ~/.vim
-ln -s <dotfiles_dir>/nvim ~/.config/nvim          # Neovim primary config (reuses vim/ backend)
+# Neovim (installed via tarball by install.sh; manual equivalent below)
+mkdir -p ~/.local/bin ~/.config/nvim
+# (download + extract nvim-linux-x86_64.tar.gz to ~/.local/nvim-linux-x86_64 then ln -s .../bin/nvim ~/.local/bin/nvim)
+ln -s <dotfiles_dir>/nvim/init.vim ~/.config/nvim/init.vim
+ln -s <dotfiles_dir>/nvim/lua ~/.config/nvim/lua
 ln -s <dotfiles_dir>/fastfetch ~/.config/fastfetch # WSL-optimized fastfetch (replaces neofetch)
 ln -s <dotfiles_dir>/gnupg/* ~/.gnupg/
 ```
+
+After manual setup, also:
+- mkdir -p ~/.vim/pack/plugins/start
+- git clone https://github.com/nvim-treesitter/nvim-treesitter ~/.vim/pack/plugins/start/nvim-treesitter
+- cd that dir && git checkout v0.9.3
+- Install tree-sitter CLI to ~/.local/bin as shown in install.sh
+- Ensure ~/.local/bin is first in $PATH (see bash_aliases)
 
 **Note:** After manual symlink setup, initialize submodules so color schemes work:
 ```bash
@@ -41,13 +54,16 @@ git submodule update --init --recursive
 ```
 
 ## Required Packages
-The install script installs these packages automatically:
+The install script installs these packages automatically (plus latest Neovim via official tarball, nvim-treesitter pinned, and tree-sitter CLI):
 ```bash
-sudo apt install apt-transport-https neovim vim build-essential htop git bind9-dnsutils software-properties-common fastfetch curl
-# - neovim is the primary editor (vim kept only for compatibility)
+sudo apt install apt-transport-https vim build-essential htop git bind9-dnsutils software-properties-common fastfetch curl
+# - Neovim is installed from the latest GitHub release (tar ball to ~/.local/nvim-...) because Ubuntu repos lag behind
+# - vim is kept only for compatibility/scripts that call it
 # - fastfetch replaces neofetch (neofetch is deprecated and not installed)
 # - bind9-dnsutils provides dig/nslookup (old "dnsutils" name is a virtual package)
 ```
+
+**Note on Neovim version:** We pin nvim-treesitter to v0.9.3 for compatibility. The install script handles the latest Neovim + pinned plugin + CLI. After install, start Neovim to let `ensure_installed` fetch the parsers for python/bash/etc. (or run `:TSInstall python bash`).
 Additionally, it installs:
 - uv: Modern Python package manager
 - ruff: Python linter and formatter
