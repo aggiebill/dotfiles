@@ -97,7 +97,16 @@ endif
 "       ~/.vim/pack/plugins/start/nvim-treesitter
 "
 " Then run inside Neovim:
-"   :TSInstall python lua vim bash
+"   :TSInstall python bash
+"
+" IMPORTANT: In the current version of nvim-treesitter, bare `:TSInstall`
+" gives "E471: Argument required". You must pass the language name(s).
+" Use <Tab> after `:TSInstall ` for completion of available parsers.
+"
+" The Lua configuration in nvim/lua/treesitter.lua will also automatically
+" trigger installation of the key parsers (python, bash + supporting)
+" the first time you start Neovim. It then enables treesitter highlighting
+" and indent automatically for those filetypes.
 "
 " The Lua configuration lives in nvim/lua/treesitter.lua (no heredoc/EOF
 " needed in init.vim). It is loaded only if the plugin is present.
