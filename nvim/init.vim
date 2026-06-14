@@ -96,7 +96,18 @@ endif
 "   git clone https://github.com/nvim-treesitter/nvim-treesitter \
 "       ~/.vim/pack/plugins/start/nvim-treesitter
 "
-" Then run inside Neovim:
+"   # Pin to a version compatible with Neovim 0.11 (the main branch now
+"   # requires 0.12+ and will fail the health check).
+"   cd ~/.vim/pack/plugins/start/nvim-treesitter
+"   git checkout v0.9.3
+"
+"   # Also install the tree-sitter CLI (needed for some operations):
+"   mkdir -p ~/.local/bin
+"   curl -fsSL https://github.com/tree-sitter/tree-sitter/releases/latest/download/tree-sitter-linux-x64.gz \
+"     | gunzip > ~/.local/bin/tree-sitter
+"   chmod +x ~/.local/bin/tree-sitter
+"
+" Then (after restarting your shell so ~/.local/bin is in $PATH) run inside Neovim:
 "   :TSInstall python bash
 "
 " IMPORTANT: In the current version of nvim-treesitter, bare `:TSInstall`
@@ -105,8 +116,9 @@ endif
 "
 " The Lua configuration in nvim/lua/treesitter.lua will also automatically
 " trigger installation of the key parsers (python, bash + supporting)
-" the first time you start Neovim. It then enables treesitter highlighting
-" and indent automatically for those filetypes.
+" the first time you start Neovim (via ensure_installed). It enables
+" treesitter highlighting, indent, and incremental selection (gnn/grn etc.)
+" for those filetypes.
 "
 " The Lua configuration lives in nvim/lua/treesitter.lua (no heredoc/EOF
 " needed in init.vim). It is loaded only if the plugin is present.
